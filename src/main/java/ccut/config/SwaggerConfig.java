@@ -1,7 +1,5 @@
 package ccut.config;
 
-import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
-import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -26,9 +24,19 @@ import springfox.documentation.spring.web.plugins.Docket;
        .apis(RequestHandlerSelectors.basePackage("ccut.controllerManage"))
 
        .build()
-       .groupName("管理系统接口");
+       .groupName("官方管理系统接口");
    }
 
+     @Bean
+     public Docket store_api() {
+         return (new Docket(DocumentationType.OAS_30))
+                 .apiInfo(apiInfo3())
+                 .select()
+                 .apis(RequestHandlerSelectors.basePackage("ccut.controllerStore"))
+
+                 .build()
+                 .groupName("商家管理系统接口");
+     }
 
    @Bean
    public Docket user_api() {
@@ -37,25 +45,32 @@ import springfox.documentation.spring.web.plugins.Docket;
        .apis(RequestHandlerSelectors.basePackage("ccut.controllerUser"))
 
        .build()
-       .groupName("平台接口")
-
+       .groupName("app接口")
        .apiInfo(apiInfo1());
    }
 
    private ApiInfo apiInfo1() {
      return (new ApiInfoBuilder())
-       .title("平台网站")
-       .description("平台网站api")
+       .title("app网站")
+       .description("app网站api")
        .version("1.0")
 
        .build();
    }
    private ApiInfo apiInfo2() {
      return (new ApiInfoBuilder())
-       .title("管理系统")
-       .description("管理系统api")
+       .title("官方管理系统")
+       .description("官方管理系统api")
        .version("1.0")
        .build();
+   }
+
+   private ApiInfo apiInfo3() {
+         return (new ApiInfoBuilder())
+                 .title("商家管理系统")
+                 .description("商家管理系统api")
+                 .version("1.0")
+                 .build();
    }
  }
 

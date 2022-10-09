@@ -24,7 +24,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -133,21 +132,33 @@ public class StoreAuditServiceImpl extends ServiceImpl<StoreAuditMapper, StoreAu
         if (StringUtils.isAllBlank(Id + "", approval_status, audit_results)) {
             throw new CustomizeException(ErrorEnum.PARAMETER_EXCEPTION_NULL);
         }
+        //更新状态和审核结果 信息
         int i = this.storeAuditMapper.updateApproval(Id, approval_status, audit_results);
 
 
+        //如果出错直接抛出错误
         if (i < 0) {
             throw new CustomizeException(ErrorEnum.INTERNAL_ERROR);
         }
-
+        //状态为 2 则审核通过
         if (approval_status.equals("2")) {
-            StoreAudit storeAudit = (StoreAudit) this.storeAuditMapper.selectById(Id);
+            StoreAudit storeAudit = storeAuditMapper.selectById(Id);
             Store store = new Store();
 
+            //店铺地址 默认为空
+            store.setStoreImg("");
+
+            Integer userId = storeAudit.getUserId();
+            store.setUpdateTime(null);
+            //初始修改人和创建人都为 userid
+            store.setCreateUser(userId.longValue());
+            store.setUpdateUser(userId.longValue());
+            //把经营状态 设置为 1 营业状态
             store.setStatus(1);
+            //名修改掉
             String auditName = storeAudit.getAuditName();
             store.setStoreName(auditName);
-            store.setCreateDate(null);
+
             BeanUtils.copyProperties(storeAudit, store);
             this.storeMapper.insert(store);
         }

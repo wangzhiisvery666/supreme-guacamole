@@ -5,11 +5,13 @@ import ccut.model.VO.StoreApplicationVO;
 import ccut.model.pojo.StoreAudit;
 import ccut.model.request.StoreAuditRequest;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.List;
 
+@Service
 public interface StoreAuditService extends IService<StoreAudit> {
   CommonResponse<Boolean> addStoreAudit(StoreAuditRequest paramStoreAuditRequest);
   

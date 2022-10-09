@@ -15,8 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class StoreAuditServiceImplTest {
 
@@ -29,7 +27,7 @@ class StoreAuditServiceImplTest {
     //测试分页
     void getStoreAuditByStatus() {
         CommonResponse<HashMap<String, Object>> storeAuditByStatus = storeAuditService.getStoreAuditByStatus(1, 2, 3);
-        List<StoreAudit> records =(List<StoreAudit> )storeAuditByStatus.getData().get("records");
+        List<StoreAudit> records =(List<StoreAudit>)storeAuditByStatus.getData().get("records");
         Object total = storeAuditByStatus.getData().get("total");
         records.forEach(System.out::println);
         System.out.println(total);

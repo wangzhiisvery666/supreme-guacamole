@@ -39,6 +39,7 @@ public enum ErrorEnum
    INCORRECT_CELL_CreditCode_FORMAT("133", "信用编号格式错误", ""),
    STORE_ALREADY_EXISTS("134", "店铺已存在", ""),
    NOT_APPLIED("135", "未申请", ""),
+   UNREGISTERED_STORE("136", "未注册店铺", ""),
 
 
    USERNAME_VERIFICATION_FAILED("A0110", "用户名校验失败", ""),

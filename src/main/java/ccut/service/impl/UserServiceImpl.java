@@ -15,7 +15,6 @@ import ccut.service.AddressService;
 import ccut.service.UserService;
 import ccut.utils.CommonUtils;
 import ccut.utils.JwtUtil;
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;

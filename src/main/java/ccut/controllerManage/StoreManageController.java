@@ -27,7 +27,7 @@ public class StoreManageController {
 
     @GetMapping({"/getAllStore"})
     public CommonResponse<List<Store>> getAllStore() {
-        return this.storeService.getAllStore();
+        return storeService.getAllStore();
     }
 
     @PutMapping({"/putStoreStatus"})
@@ -39,7 +39,7 @@ public class StoreManageController {
             @ApiImplicitParam(name = "id", value = "店铺id", required = true),
             @ApiImplicitParam(name = "message", value = "整改消息", required = true)})
     public CommonResponse<Boolean> putStoreStatus(@RequestParam("id") int id, @RequestParam("message") String message) {
-        return this.storeService.putStoreStatus(id, message);
+        return storeService.putStoreStatus(id, message);
     }
 }
 

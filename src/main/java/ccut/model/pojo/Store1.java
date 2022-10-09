@@ -20,7 +20,7 @@ import java.util.Date;
 @TableName(value ="STORE")
 @Data
 @ApiModel("店铺")
-public class Store implements Serializable {
+public class Store1 implements Serializable {
     /**
      * 商家id
      */
@@ -118,7 +118,7 @@ public class Store implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Store other = (Store) that;
+        Store1 other = (Store1) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
                 && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
                 && (this.getStoreName() == null ? other.getStoreName() == null : this.getStoreName().equals(other.getStoreName()))

@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping({"/admin"})
 public class adminLoginController
 {
+  @Autowired
+  AdminService adminService;
+
 
 //  @Autowired
 //  AdminLoginServiceImpl adminLoginService;
@@ -36,7 +39,6 @@ public class adminLoginController
   }
 
 
-  @Autowired
-  AdminService adminService;
+
 }
 
